@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+
+{{#each information}}
+
+	<table>
+		<tr>
+			<th>username</th>
+			<th>first name</th>
+			<th>last name</th>
+			<th>password</th>
+		</tr>
+
+			<tr>
+				<td>{{username}}</td>
+				<td>{{firstName}}</td>
+				<td>{{lastName}}</td>
+				<td>{{password}}</td>
+			</tr>
+	</table>
+{{/each}}
+

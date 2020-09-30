@@ -1,8 +1,21 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 a {
   color: #00B7FF;
+}
+
+.navbar-inverse{
+  background: #2c3e50;
+  color: white;
+}
+
+.navbar-inverse .navbar-brand{
+  color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: white;
 }

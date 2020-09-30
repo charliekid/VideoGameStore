@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mysql = require('mysql');
+var hbs = require('express-handlebars');
 
 // Routers
 var indexRouter = require('./routes/index');
@@ -29,6 +30,7 @@ db.connect((err) => {
 });
 global.db = db;
 
+hbs.registerPartial(__dirname + '/views');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +41,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

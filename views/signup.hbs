@@ -4,13 +4,23 @@
         <!-- Login Form -->
         <h3>Sign Up</h3>
         <form id="signup" action="/signup" method="POST">
-            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
-            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" >
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" >
+            <input type="text" id="username" name="username" placeholder="Username" >
+            <input type="password" id="password" name="password" placeholder="Password" >
+<!--            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" >-->
             <input type="submit" class="btn btn-primary btn-block'" value="Register">
         </form>
+        {{#if isUsernameDuplicate}}
+            <div class="error">
+                Username taken, please try again.<br>
+            </div>
+        {{/if}}
+        {{#if isPasswordTooSimple}}
+            <div class="error">
+                Password must be at least 6 characters and contain letters, numbers, and at least 1 special character.<br>
+            </div>
+        {{/if}}
     </div>
 </div>
 {{> footer }}

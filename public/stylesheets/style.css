@@ -186,3 +186,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+.error {
+  color: red;
+  font-weight: bold;
+}

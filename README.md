@@ -10,6 +10,11 @@ For this project teams of 3-4 students will design and implement a webstore usin
 ## Project Board
 [Web Store Project Board](https://github.com/users/dignacio0815/projects/1)
 
+## Running the App
+To run the app: `nodemon ./bin/wwww`
+
+To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql adminer`
+
 ## You will be graded on the following:
 
 **Activities Required**

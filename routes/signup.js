@@ -32,7 +32,35 @@ router.post('/', function(req, res, next) {
 
 });
 
+// Password must be at least 6 characters long and contain
+// only numbers, letters, and special characters (at least 1 each).
 function isPasswordValid(password) {
-    return password.length >= 6;
+    const specialCharacters = '!@#$%^&*()_-+={}[]|\\:;"\'<>,.?/~`';
+    const numberRegex = /[0-9]/
+    const letterRegex = /[a-zA-Z]/
+    let character;
+    let containsSpecialCharacter = false;
+    let containsNumber = false;
+    let containsLetter = false;
+
+    if (password.length < 6) {
+        return false;
+    }
+    for (character of password) {
+        if (specialCharacters.includes(character)) {
+           containsSpecialCharacter = true;
+        }
+        else if (character.match(numberRegex)) {
+            containsNumber = true;
+        }
+        else if (character.match(letterRegex)) {
+            containsLetter = true;
+        }
+        else {
+            return false;
+        }
+
+    }
+    return containsSpecialCharacter & containsNumber & containsLetter;
 }
 module.exports = router;

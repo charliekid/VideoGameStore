@@ -1,1 +1,2 @@
-header.hbs and footer.hbs based off of code from Internet Programming class
+header.hbs, footer.hbs, and signup.hbs based off of code from Internet Programming project
+alphanumeric regex: https://stackoverflow.com/questions/4434076/best-way-to-alphanumeric-check-in-javascript/8653681

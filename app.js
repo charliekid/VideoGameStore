@@ -14,6 +14,7 @@ var signupRouter = require('./routes/signup');
 
 var app = express();
 
+let port = 3000;
 // create connection to database
 const db = mysql.createConnection({
     host: 'durvbryvdw2sjcm5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
@@ -63,5 +64,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(process.env.PORT || port, function(){
+    console.log("server is running...");
+});
+
 
 module.exports = app;

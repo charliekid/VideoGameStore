@@ -6,12 +6,24 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
 });
 
-router.post('/', function(req, res, next) {
-    let stmt = 'SELECT * FROM user_table WHERE username=? and password=?'
-    let data = [req.body.username, req.body.password]
-    db.query(stmt, data, function(error, result) {
-        if (error) throw error;
-        res.render('login', { title: 'Express' });
-    });
+router.post('/', async function(req, res, next) {
+    let loggedInUser = await verifyLogin(req.body.username, req.body.password);
+    if (loggedInUser) {
+        res.render('login', { invalidLogin: true });
+    }
+    res.render('login');
 });
+
+// authenticate user credentials when logging in
+function verifyLogin(username, password) {
+    let stmt = 'SELECT * FROM user_table WHERE username=? and password=?'
+    let data = [username, password];
+    return new Promise(function(resolve, reject) {
+        db.query(stmt, data, function(error, results) {
+            if (error) throw error;
+            resolve(results);
+        })
+    });
+};
+
 module.exports = router;

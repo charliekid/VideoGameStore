@@ -8,12 +8,11 @@
             <input type="password" id="password" name="password" placeholder="password">
             <input type="submit" class="btn btn-primary btn-block'" value="Log In">
         </form>
-<!--        <%if(typeof error != 'undefined' && error){%>-->
-<!--        <div class="error">-->
-<!--            Invalid username or password, please try again.<br>-->
-<!--        </div>-->
-<!--        <%}%>-->
-        <!-- User Signup -->
+        {{#if invalidLogin}}
+            <div class="error">
+                Invalid credentials! Please try again.<br>
+            </div>
+        {{/if}}
         <div id="formFooter">
             <a class="underlineHover" href="/signup">Not a user? Sign up</a>
         </div>

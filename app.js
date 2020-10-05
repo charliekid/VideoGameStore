@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var databaseRouter = require('./routes/database');
 var signupRouter = require('./routes/signup');
-
+var loginRouter = require('./routes/login');
 var app = express();
 
 // create connection to database
@@ -47,6 +47,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/database', databaseRouter);
 app.use('/signup', signupRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

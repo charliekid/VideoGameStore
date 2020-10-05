@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/', async function(req, res, next) {
     let loggedInUser = await verifyLogin(req.body.username, req.body.password);
-    if (loggedInUser) {
-        res.render('login', { invalidLogin: true });
+    if (loggedInUser.length) {
+        res.render('login');
     }
-    res.render('login');
+    res.render('login', { invalidLogin: true });
 });
 
 // authenticate user credentials when logging in

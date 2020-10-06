@@ -181,8 +181,9 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   font-weight: bold;
 }
 
-/************************stuff for shopping cart on nav bar*******************************/
+/************************stuff for shopping cart *******************************/
 
+/*nav bar stuff*/
 ul.dropdown-cart{
     min-width:250px;
     float: right;
@@ -226,4 +227,7 @@ ul.dropdown-cart li .item-right{
 ul.dropdown-cart li .item-right button{
     margin-top:14px;
 }
-/************************ end of stuff for shopping cart on nav bar*******************************/
+/*end of nav bar stuff*/
+
+
+/************************ end of stuff for shopping cartr*******************************/

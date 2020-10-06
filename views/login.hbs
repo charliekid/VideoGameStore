@@ -1,0 +1,22 @@
+{{> header }}
+<div class="wrapper">
+    <div id="formContent">
+        <!-- Login Form -->
+        <h3>Log In</h3>
+        <form id="loginForm" action="/login" method="POST">
+            <input type="text" id="username" name="username" placeholder="username">
+            <input type="password" id="password" name="password" placeholder="password">
+            <input type="submit" class="btn btn-primary btn-block'" value="Log In">
+        </form>
+        {{#if invalidLogin}}
+            <div class="error">
+                Invalid credentials! Please try again.<br>
+            </div>
+        {{/if}}
+        <div id="formFooter">
+            <a class="underlineHover" href="/signup">Not a user? Sign up</a>
+        </div>
+
+    </div>
+</div>
+{{> footer }}

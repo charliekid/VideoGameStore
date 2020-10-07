@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var databaseRouter = require('./routes/database');
 var signupRouter = require('./routes/signup');
 var loginRouter = require('./routes/login');
+var gamesRouter = require('./routes/games');
 var app = express();
 
 // create connection to database
@@ -48,6 +49,7 @@ app.use('/users', usersRouter);
 app.use('/database', databaseRouter);
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
+app.use('/games', gamesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

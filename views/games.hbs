@@ -1,13 +1,19 @@
 {{> header }}
-<div class="card-columns">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Go somewhere</a>
+<div class="card-deck">
+    {{# each games}}
+        <div class="col-sm-4">
+        <div class="card" style="max-width: 15rem;">
+            <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/91KQmjDxj-L._SL1500_.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{gameTitle}}</h5>
+                <p class="card-text">{{sliceDescription description}}</p>
+<!--                replace href link with "/games{{gameId}} when individual product page is up-->
+                <a href="#" class="black-text d-flex justify-content-end">
+                    <h7>Learn More <i class="fas fa-angle-double-right"></i></h7>
+                </a>
+            </div>
         </div>
-    </div>
-
+        </div>
+    {{/each}}
 </div>
 {{> footer }}

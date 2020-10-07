@@ -6,6 +6,8 @@ var logger = require('morgan');
 const mysql = require('mysql');
 var hbs = require('express-handlebars');
 
+
+
 // Routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -35,7 +37,15 @@ global.db = db;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.engine('hbs', hbs({extname : 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/'}));
+
+app.engine('hbs', hbs({extname : 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/', helpers: {
+        sliceDescription: function(description) {
+            if (description.length > 100) {
+                return description.slice(0, 100) + "...";
+            }
+            return description;
+        }
+    }}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -50,6 +60,8 @@ app.use('/database', databaseRouter);
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/games', gamesRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 var databaseRouter = require('./routes/database');
 var signupRouter = require('./routes/signup');
 var loginRouter = require('./routes/login');
+var accountRouter = require('./routes/account');
 var gamesRouter = require('./routes/games');
 var app = express();
 
@@ -59,6 +60,7 @@ app.use('/users', usersRouter);
 app.use('/database', databaseRouter);
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
+app.use('/account', accountRouter);
 app.use('/games', gamesRouter);
 
 

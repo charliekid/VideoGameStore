@@ -1,0 +1,21 @@
+{{> loggedInHeader }}
+<div class="wrapper">
+    <div id="formContent">
+        <!-- Login Form -->
+        <h3>Account Details</h3>
+        <!-- display info and allow user to update-->
+        <form id="account">
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" class="btn btn-primary btn-block'" value="Update">
+        </form>
+        {{#if isPasswordTooSimple}}
+            <div class="error">
+                Password must be at least 6 characters and contain only letters, numbers, and special characters (at least 1 of each).<br>
+            </div>
+        {{/if}}
+    </div>
+</div>
+{{> footer }}

@@ -20,8 +20,8 @@ router.get('/', function(req, res, next) {
                 console.log('error with the query');
                 res.render('views/error');
             }
-            console.log(sumResult);
-            console.log(result);
+            // console.log(sumResult);
+            // console.log(result);
             res.render('cart', {
                 title: 'Cart Stuff',
                 result: result,
@@ -32,20 +32,17 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/total', function(req, res, next) {
-    let username = 'Dagger1';
-    let sumQuery = "SELECT SUM(amount) from cart_table WHERE username=" + "\'" + username + "\';"
-    db.query(sumQuery, function(error, results, fields) {
-        if (error) {
-            console.log('error with the query');
-            res.render('views/error');
+router.get('/delete/:id', function(req, res, next) {
+    let cartId = req.params.id;
+    console.log("cartid " + cartId);
+    let query = "DELETE FROM `cart_table` WHERE cartId=" + "\'" + cartId + "\'";
+    db.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send(err);
         }
-
-        console.log(results);
-        res.json({
-            sumResult: results
-        });
-    }); // end of sum Query
+        res.redirect('/cart');
+    });
 });
 
 module.exports = router;

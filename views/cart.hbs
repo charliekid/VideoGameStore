@@ -75,9 +75,12 @@
 					<td class="col-sm-1 col-md-1 text-center"><strong></strong></td>
 					<td class="col-sm-1 col-md-1 text-center" id="amountOnItem"><strong>${{amount}}</strong></td>
 					<td class="col-sm-1 col-md-1">
-						<button type="button" class="btn btn-danger">
-							<span class="glyphicon glyphicon-remove"></span> Remove
-						</button></td>
+						<a href="/cart/delete/{{cartId}}" class="btn btn-sm btn-danger">Remove</a>
+<!--						<button type="button" class="btn btn-danger" href="/cart/delete/{{cartId}}">-->
+<!--							<span class="glyphicon glyphicon-remove"></span> Remove-->
+<!--						</button>-->
+					</td>
+
 				</tr>
 <!--				not sure if this is going to work, but we are going to add the pricing to the cart here-->
 				{{/each}}

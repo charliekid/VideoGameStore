@@ -227,43 +227,30 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 
 #productDetailsBody {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   min-height: 100vh;
 }
 
-.productDetailsContainer {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  box-sizing: border-box;
+#productDetailsContent {
+  flex-direction: row;
+  width: 80%;
+}
+
+#productDetailsImg {
+  flex-direction: column;
+}
+
+#productDetailsForm {
+  border-radius: 10px 10px 10px 10px;
   background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-  display: flex;
-  width: max-content;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
 
-.productDetailsContainer .card {
-  position: relative;
-  max-width: 450px;
-  background: #fff;
-  margin: 10px;
-  padding: 15px;
-  display: flex;
+.productDetailColors {
+  color: blue;
 }
 
-.productDetailsContainer .card .imageBox {
-  width: 200px;
-  /*flex: 0 0 150px;*/
-}
-
-.productDetailsContainer .card .imageBox img {
-  max-width: 100%;
+#addToCartButton {
+  width: 20%;
 }

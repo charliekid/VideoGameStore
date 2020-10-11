@@ -1,0 +1,16 @@
+{{> header }}
+<!--{{ productDetails.gameId}}-->
+<body id="productDetailsBody">
+    <div class="productDetailsContainer">
+            <div class="card">
+                <div class="imageBox">
+                    <img src="{{ productDetails.img}}" align="left"/>
+                </div>
+                <div class="content">
+                    <h1>{{productDetails.gameTitle}}</h1>
+                    <h3>{{productDetails.description}}</h3>
+                </div>
+            </div>
+    </div>
+</body>
+{{> footer }}

@@ -8,9 +8,14 @@
                 <h5 class="card-title">{{gameTitle}}</h5>
                 <p class="card-text">{{sliceDescription description}}</p>
 <!--                replace href link with "/games{{gameId}} when individual product page is up-->
-                <a href="#" class="black-text d-flex justify-content-end">
-                    <h7>Learn More <i class="fas fa-angle-double-right"></i></h7>
-                </a>
+                <form action="/productDetails/{{gameId}}">
+<!--                    <h7>Learn More <i class="fas fa-angle-double-right"></i></h7>-->
+                    <input type="hidden" name="productId" value={{gameId}}>
+                    <input type="submit" id="productId" class="learnMoreBtn" value="Learn More"/>
+                </form>
+<!--                <a href="/productDetails" class="black-text d-flex justify-content-end">-->
+<!--                    <h7>Learn More <i class="fas fa-angle-double-right"></i></h7>-->
+<!--                </a>-->
             </div>
         </div>
         </div>

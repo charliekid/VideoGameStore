@@ -1,0 +1,15 @@
+{{> loggedInHeader }}
+<body id="productDetailsBody">
+    <div id="productDetailsImg">
+        <img src="{{ productDetails.img}}" width="250px"/>
+    </div>
+    <div id="productDetailsContent">
+        <h1>{{productDetails.gameTitle}}</h1>
+        <h5>{{productDetails.description}}</h5>
+        <h6 class="productDetailColors">Price: ${{productDetails.amount}}</h6>
+        <h6 class="productDetailColors">Rating: {{productDetails.rating}}</h6>
+        <h6 class="productDetailColors">Quantity: {{productDetails.qty}}</h6>
+        <button type="button" class="btn btn-success" id="addToCartButton">Add to Cart</button>
+    </div>
+</body>
+{{> footer }}

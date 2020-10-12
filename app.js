@@ -16,6 +16,7 @@ var signupRouter = require('./routes/signup');
 var loginRouter = require('./routes/login');
 var accountRouter = require('./routes/account');
 var gamesRouter = require('./routes/games');
+var productDetailsRouter = require('./routes/productDetails');
 var app = express();
 
 // create connection to database
@@ -62,6 +63,7 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/account', accountRouter);
 app.use('/games', gamesRouter);
+app.use('/productDetails', productDetailsRouter);
 
 
 

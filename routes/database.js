@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
     // the query we need to ask our database
     let query = 'SELECT * FROM user_table'
     // make a db connection and query
+    db.query
     db.query(query, (err, result) => {
         if (err) {
             console.log('error with the query');

@@ -1,0 +1,180 @@
+{{> header }}
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+<!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-10 col-md-offset-1">
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th>Product</th>
+					<th></th>
+					<th class="text-center"></th>
+					<th class="text-center">Price</th>
+					<th> </th>
+				</tr>
+				</thead>
+				<tbody>
+<!--				<tr>-->
+<!--					<td class="col-sm-8 col-md-6">-->
+<!--						<div class="media">-->
+<!--							<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>-->
+<!--							<div class="media-body">-->
+<!--								<h4 class="media-heading"><a href="#">Product name</a></h4>-->
+<!--								<h5 class="media-heading"> by <a href="#">Brand name</a></h5>-->
+<!--								<span>Status: </span><span class="text-success"><strong>In Stock</strong></span>-->
+<!--							</div>-->
+<!--						</div></td>-->
+<!--					<td class="col-sm-1 col-md-1" style="text-align: center">-->
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" value="3">-->
+<!--					</td>-->
+<!--					<td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>-->
+<!--					<td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>-->
+<!--					<td class="col-sm-1 col-md-1">-->
+<!--						<button type="button" class="btn btn-danger">-->
+<!--							<span class="glyphicon glyphicon-remove"></span> Remove-->
+<!--						</button></td>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td class="col-md-6">-->
+<!--						<div class="media">-->
+<!--							<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>-->
+<!--							<div class="media-body">-->
+<!--								<h4 class="media-heading"><a href="#">Product name</a></h4>-->
+<!--								<h5 class="media-heading"> by <a href="#">Brand name</a></h5>-->
+<!--								<span>Status: </span><span class="text-warning"><strong>Leaves warehouse in 2 - 3 weeks</strong></span>-->
+<!--							</div>-->
+<!--						</div></td>-->
+<!--					<td class="col-md-1" style="text-align: center">-->
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" value="2">-->
+<!--					</td>-->
+<!--					<td class="col-md-1 text-center"><strong>$4.99</strong></td>-->
+<!--					<td class="col-md-1 text-center"><strong>$9.98</strong></td>-->
+<!--					<td class="col-md-1">-->
+<!--						<button type="button" class="btn btn-danger">-->
+<!--							<span class="glyphicon glyphicon-remove"></span> Remove-->
+<!--						</button></td>-->
+<!--				</tr>-->
+<!--				start of a cart maybe-->
+				{{#each result}}
+				<tr>
+					<td class="col-sm-8 col-md-6">
+						<div class="media">
+							<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+							<div class="media-body">
+								<h4 class="media-heading"><a href="#">{{gameTitle}}</a></h4>
+								<span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+							</div>
+						</div></td>
+					<td class="col-sm-1 col-md-1" style="text-align: center">
+<!--						<input type="text" class="form-control" id="qtyInput" value="{{qty}}">-->
+					</td>
+					<td class="col-sm-1 col-md-1 text-center"><strong></strong></td>
+					<td class="col-sm-1 col-md-1 text-center" id="amountOnItem"><strong>${{amount}}</strong></td>
+					<td class="col-sm-1 col-md-1">
+						<a href="/cart/delete/{{cartId}}" class="btn btn-sm btn-danger">Remove</a>
+<!--						<button type="button" class="btn btn-danger" href="/cart/delete/{{cartId}}">-->
+<!--							<span class="glyphicon glyphicon-remove"></span> Remove-->
+<!--						</button>-->
+					</td>
+
+				</tr>
+<!--				not sure if this is going to work, but we are going to add the pricing to the cart here-->
+				{{/each}}
+<!--				end of a cart maybe?-->
+<!--				<tr>-->
+<!--					<td>   </td>-->
+<!--					<td>   </td>-->
+<!--					<td>   </td>-->
+<!--					<td><h5>Subtotal</h5></td>-->
+<!--					<td class="text-right"><h5><strong>$24.59</strong></h5></td>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td>   </td>-->
+<!--					<td>   </td>-->
+<!--					<td>   </td>-->
+<!--					<td><h5>Estimated shipping</h5></td>-->
+<!--					<td class="text-right"><h5><strong>$6.94</strong></h5></td>-->
+<!--				</tr>-->
+				<tr>
+					<td>   </td>
+					<td>   </td>
+					<td>   </td>
+					<td><h3>Total</h3></td>
+					{{#each sumResult}}
+					<td class="text-right" id="cartTotal"><h3><strong>${{cartSum}}</strong></h3></td>
+					{{/each}}
+				</tr>
+				<tr>
+					<td>   </td>
+					<td>   </td>
+					<td>   </td>
+					<td>
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+						</button></td>
+					<td>
+						<button type="button" class="btn btn-success">
+							Checkout <span class="glyphicon glyphicon-play"></span>
+						</button></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+	var totalCart = 0;
+	//let totalCartAmount = 0;
+	let qtyBox = $("#qtyInput");
+
+	// When someone updates the qty box this needs to update everything
+	qtyBox.on('change', function(e) {
+	    var qtyString = document.getElementById("qtyInput").value;
+	    var amount = document.getElementById("amountOnItem").value;
+	    alert(amount);
+	})
+	function alert() {
+	    alert("totalCartAmount");
+	}
+	// adds total to cart
+	function addTotal(amt) {
+	    totalCartAmount += amt;
+	    alert("adding " + amt + " to the total");
+	}
+	// calculates the amount of units times price
+	function calculateAmount(amt, qty) {
+	    return amt * qty;
+	}
+	$(document).ready(function () {
+		console.log("hello");
+	//     alert("page ready");
+	//     $.ajax({
+	// 		type: "POST",
+	// 	    url: "/cart/total",
+	// 	    dataType: "json",
+	// 	    contentType: "application/json",
+	// 	    data: JSON.stringify({}),
+	// 	    success: function (data, status) {
+	// 		    $('#cartTotal').html(data.sumResult[0].sumResult);
+	// 		    console.log(data.sumResult);
+	// 		    alert(data.sumResult[0].sumResult);
+	// 	    },
+	// 	    error: function (xhr, status, error) {
+	// 		    err = eval("(" + xhr.responseText + ")");
+	// 		    console.error(err);
+	// 	    },
+	// 	    complete: function (data, status) { //optional, used for debugging purposes
+	// 		    console.log(status);
+	// 	    }
+	//
+	//     }); // end of sum of cart ajax call
+	});
+
+
+
+</script>

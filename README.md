@@ -40,56 +40,56 @@ To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql
     - TypeScript
         - [Angular](https://angularjs.org/)
         
-- [ ] Research Database Technologies
+- [x] Research Database Technologies
     - MongoDB
     - MariaDB
     - MySQL
     - Postgres
     - SQLite
-- [ ] Develop a wireframe of a website
-- [ ] Develop users stories and rate them
+- [x] Develop a wireframe of a website
+- [x] Develop users stories and rate them
 
 ***
 
 **REST API**
 - [ ] API must support the following
     - [ ] List all items
-    - [ ] Add new items
-    - [ ] Remove items
-    - [ ] Update items
+    - [x] Add new items
+    - [x] Remove items
+    - [x] Update items
     - [ ] Search for items
-    - [ ] Create new user account
-    - [ ] User Log in
-    - [ ] User log out
+    - [x] Create new user account
+    - [x] User Log in
+    - [x] User log out
     - [ ] Add items to cart
     
 ***
 
 **Web front end**
-- [ ] Landing page
+- [x] Landing page
     - The page that shows what your store is about
-- [ ] Product page
+- [x] Product page
     - A listing of the products
     - Show pictures and brief descriptions. Check Amazon.com or etsy.com for inspiration
 - [ ] A product detail page
     - The page that lists the descriptions and details of the product
-- [ ] Shopping cart
+- [x] Shopping cart
     - The page that shows the user details of what they have selected.
     - Quantity, subtotal, etc.
     - The user must be able to make changes to their cart
-- [ ] Create account page
+- [x] Create account page
     - We have all seen these. Ask for a usernameand password
     - Do not allow duplicate usernames
     - enforce simple password rules (minimum length >=6 characters, alphanumeric with at least one special character)
-- [ ] Log in page
+- [x] Log in page
     - Standard username and password page
-- [ ] User profile page
+- [x] User profile page
     - Show the username and relevant detail
 ***
 **Persistence Layer**
-- [ ] MariaDB
-- [ ] MySQL
-- [ ] Information to be stored in  the database:
+- [x] MariaDB
+- [x] MySQL
+- [x] Information to be stored in  the database:
     - User information
     - Product details
     - Shopping cart information
@@ -100,24 +100,9 @@ To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql
 > As a video game shopper, I want to be able to have my credentials, items for sale/bought saved so we could query it later
 
 **Definition Of Done**:
-- [ ]
+- [x]
 
 Note: This would be used to store items that a user has purchased, put up for sale, and user credentials
-
-***
-
-## Sprint 2 ()
-
-## Sprint 3 ()
-
-**User Story**: Create Account - Cathy Hsu
->As a video game shopper I want to create an account so I can buy video games and keep track of my search history.
-
-**Definition Of Done**:
-- [ ] Ask for first name, last name, username, password
-- [ ] Do not allow duplicate usernames 
-- [ ] Enforce password rules: 
-    - At least 6 characters with 1 special character
 
 ***
 
@@ -132,32 +117,52 @@ Note: This is necessary for the site since we want the users to be able to log b
 
 ***
 
+**User Story**: Create Account - Cathy Hsu
+>As a video game shopper I want to create an account so I can buy video games and keep track of my search history.
+
+**Definition Of Done**:
+- [x] Ask for first name, last name, username, password
+- [x] Do not allow duplicate usernames 
+- [x] Enforce password rules: 
+    - At least 6 characters with 1 special character
+
+***
+
 **User Story**: Landing Page - Shawn Deppe
 > As a video game shopper  I want to access the home screen  so I can see the what the store is selling
 
 **Definition Of Done**:
-- [ ] Should include search bar
-- [ ] Should include categories
-
-Note: This will allow the user to naviagte through the website
+- [x] Should include search bar
+Note: This will allow the user to navigate through the website
 
 ***
 
-**User Story**: Search Functionality - Denize Ignacio
-> As a video game shopper I want to search for other video game titles/consoles and filter by category
+## Sprint 2 ()
+
+**User Story**: Product Page - Cathy Hsu
+>As a video game shopper  I want to have a product page so I can see all the items I am interested in buying
 
 **Definition Of Done**:
-- [ ]
+- [x] Display all video games that meet the search criteria
+- [ ] Clicking on a video game will bring the user to the individual product page
 
-Note: This is necessary for the site since we want users to search for other video game titles
+***
+**User Story**: Shopping Cart - Charlie Nguyen
+>As a video game shopper  I want to have a shopping cart  so I can see the items I have selected
+
+**Definition Of Done**:
+- [x] Display items user has selected 
+- [x] Should allow users to edit items in the cart
+
+Note: This is necessary for the user to see what items they have selected
 
 ***
 
-**User Story**: User Profile Page - Charlie Nguyen
+**User Story**: User Profile Page - Shawn Deppe
 > As a video game shopper I want to be able to view my personal information in case I want to make any changes to it.
 
 **Definition Of Done**:
-- [ ] Display user information
+- [x] Display user information
     - first name
     - last name
     - username
@@ -167,25 +172,20 @@ Note: This is necessary for the site since we want users to search for other vid
 
 ***
 
-**User Story**: Shopping Cart - Shawn Deppe
->As a video game shopper  I want to have a shopping cart  so I can see the items I have selected
+
+## Sprint 3 ()
+
+
+**User Story**: Search Functionality - Cathy Hsu
+> As a video game shopper I want to search for other video game titles/consoles and filter by category
 
 **Definition Of Done**:
-- [ ] Display items user has selected 
-- [ ] Should allow users to edit items in the cart
+- [ ]
 
-Note: This is necessary for the user to see what items they have selected
+Note: This is necessary for the site since we want users to search for other video game titles
 
 ***
 
-**User Story**: Product Page - Cathy Hsu
->As a video game shopper  I want to have a product page so I can see all the items I am interested in buying
-
-**Definition Of Done**:
-- [ ] Display all video games that meet the search criteria
-- [ ] Clicking on a video game will bring the user to the individual product page
-
-***
 
 **User Story**: Edit Sell Item - Denize Ignacio
 >As a video game seller I want to be able to edit item information later after I have put it up for sale. Anything from price, name, etc. I should be able to edit.

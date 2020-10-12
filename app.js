@@ -17,6 +17,7 @@ var loginRouter = require('./routes/login');
 var accountRouter = require('./routes/account');
 var gamesRouter = require('./routes/games');
 var cartRouter = require('./routes/cart');
+var productDetailsRouter = require('./routes/productDetails');
 
 var app = express();
 
@@ -65,6 +66,8 @@ app.use('/login', loginRouter);
 app.use('/account', accountRouter);
 app.use('/games', gamesRouter);
 app.use('/cart', cartRouter);
+app.use('/productDetails', productDetailsRouter);
+
 
 
 

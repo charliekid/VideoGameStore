@@ -224,7 +224,6 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   color: red;
   font-weight: bold;
 }
-
 /************************stuff for shopping cart *******************************/
 
 /*nav bar stuff*/
@@ -275,3 +274,32 @@ ul.dropdown-cart li .item-right button{
 
 
 /************************ end of stuff for shopping cartr*******************************/
+#productDetailsBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#productDetailsContent {
+  flex-direction: row;
+  width: 80%;
+}
+
+#productDetailsImg {
+  flex-direction: column;
+}
+
+#productDetailsForm {
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+.productDetailColors {
+  color: blue;
+}
+
+#addToCartButton {
+  width: 20%;
+}

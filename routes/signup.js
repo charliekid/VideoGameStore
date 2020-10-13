@@ -7,30 +7,48 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    let usernameValid = true;
+
     let passwordValid = isPasswordValid(req.body.password);
-    console.log("isPasswordValid = " + passwordValid);
-    let stmt = 'INSERT INTO user_table (username, firstName, lastName, password) VALUES (?, ?, ?, ?)';
-    let data = [req.body.username, req.body.firstName, req.body.lastName, req.body.password];
-    db.query(stmt, data, function(error, result){
-        // Check if username is already in the database
-        if(error && error.errno == 1062) {
-            usernameValid = false;
-        }
-        if (!passwordValid && !usernameValid) {
+    let usernameStmt = `SELECT * FROM user_table where username = '${req.body.username}'`;
+    db.query(usernameStmt, function(error, result) {
+        if (result.length != 0 && !passwordValid) {
             res.render('signup', {isUsernameDuplicate: true, isPasswordTooSimple: true});
-        } else if (!passwordValid) {
-            res.render('signup', {isPasswordTooSimple: true});
-        } else if (!usernameValid) {
-            res.render('signup', {isUsernameDuplicate: true});
-        } else {
-            console.log(result);
-            res.render('index', { title: 'Game Stuff' });
+        }
+        else if (result.length != 0) {
+            res.render('signup', {isUsernameDuplicate: true})
+        }
+        else if (!passwordValid) {
+            res.render('signup', {isPasswordTooSimple: true})
+        }
+        else {
+            let stmt = 'INSERT INTO user_table (username, firstName, lastName, password) VALUES (?, ?, ?, ?)';
+            let data = [req.body.username, req.body.firstName, req.body.lastName, req.body.password];
+            db.query(stmt, data, function(error, result) {
+                if (error) {
+                    console.log(error);
+                }
+                res.render('index', {title: 'Game Stuff'});
+            });
         }
     });
-    // make a db connection and query
-
 });
+
+
+function isUsernameValid(username) {
+    let usernameStmt = `SELECT * FROM user_table where username = '${username}'`;
+    let validUsername = true;
+    console.log(usernameStmt);
+    db.query(usernameStmt, function(error, result) {
+        if (error) {
+            console.log(error);
+        }
+        console.log(result);
+        validUsername = result;
+    });
+    console.log("valid = " + validUsername);
+    return validUsername;
+}
+
 
 // Password must be at least 6 characters long and contain
 // only numbers, letters, and special characters (at least 1 each).
@@ -61,6 +79,6 @@ function isPasswordValid(password) {
         }
 
     }
-    return containsSpecialCharacter & containsNumber & containsLetter;
+    return containsSpecialCharacter && containsNumber && containsLetter;
 }
 module.exports = router;

@@ -3,8 +3,8 @@
 <p ><h1 class="top">Welcome to {{title}}</h1></p>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <div>
+<!--        <div class="col-md-12">-->
+            <div class="col-md-3">
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="text">
                     <button class="btn btn-primary my-2 my-sm-0" type="submit">
@@ -17,9 +17,31 @@
                     <img alt="Bootstrap Image Preview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxigieyV15UbFAXEwrCWFCQEWcBQUaO0hkPlSwU9B6Z7iVzR6vC39YAiLJ5VtnFuf8Ljn3NpVmhPabnGqxGQk0HwmMVvjvxbkeTNzO&usqp=CAU&ec=45707746">
                 </div>
                 <div class="col-md-4">
-                    <p>
-                        empty description area
-                    </p>
+                    <form action="/games" method="GET">
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="title" class="form-control" id="title" placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-2 col-form-label">Rating</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option value="""></option>
+                                    {{# each categories}}
+                                        <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="col-md-3">
 
@@ -77,7 +99,7 @@
                     </div> <a class="carousel-control-prev" href="#carousel-238907" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-238907" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
                 </div>
             </div>
-        </div>
+<!--        </div>-->
     </div>
 </div>
 

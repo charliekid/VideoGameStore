@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mysql = require('mysql');
 var hbs = require('express-handlebars');
+const session = require('express-session'); // for persistent log in
 
 
 
@@ -18,6 +19,7 @@ var accountRouter = require('./routes/account');
 var gamesRouter = require('./routes/games');
 var cartRouter = require('./routes/cart');
 var productDetailsRouter = require('./routes/productDetails');
+var logoutRouter = require('./routes/logout');
 
 var app = express();
 
@@ -37,6 +39,13 @@ db.connect((err) => {
     console.log('Connected to database');
 });
 global.db = db;
+
+
+// enable session
+app.use(session({
+    secret: '6wOBwJBStY',
+}))
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,8 +76,7 @@ app.use('/account', accountRouter);
 app.use('/games', gamesRouter);
 app.use('/cart', cartRouter);
 app.use('/productDetails', productDetailsRouter);
-
-
+app.use('/logout', logoutRouter);
 
 
 // catch 404 and forward to error handler
@@ -86,6 +94,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;

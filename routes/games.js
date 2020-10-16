@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 
 function getSearchQuery(title, rating) {
     let stmt;
-    if (!title && !rating) {
+    if (!title && rating === "All") {
         stmt = `SELECT * FROM game_table;`
     } else if (title && !rating) {
         stmt = `SELECT * FROM game_table WHERE gameTitle LIKE '%${title}%';`;

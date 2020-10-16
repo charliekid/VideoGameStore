@@ -4,15 +4,15 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let r;
-  let result = await getCategories();
-  let categories = []
+  let result = await getRatings();
+  let ratings = []
   for (r of result) {
-    categories.push(r.rating);
+    ratings.push(r.rating);
   }
-  res.render('index', { title: 'Game Stuff' , categories: categories});
+  res.render('index', { title: 'Game Stuff' , ratings: ratings});
 });
 
-function getCategories() {
+function getRatings() {
   let stmt = "SELECT DISTINCT rating FROM game_table ORDER BY rating";
   return new Promise(function(resolve, reject) {
     db.query(stmt, function(error, result) {

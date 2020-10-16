@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    console.log(req.query.title);
-    console.log(req.query.rating);
-    console.log(getSearchQuery(req.query.title, req.query.rating));
-
     let query = getSearchQuery(req.query.title, req.query.rating);
     // make a db connection and query
     db.query(query, (err, result) => {
@@ -13,7 +9,12 @@ router.get('/', function(req, res, next) {
             console.log('error with the query');
             res.render('views/error');
         }
-        res.render('games', {games: result});
+        if (result.length != 0) {
+            res.render('games', {games: result});
+        }
+        else {
+            res.render('games', {noGames: true})
+        }
     });
 });
 

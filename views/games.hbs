@@ -1,5 +1,8 @@
 {{> header }}
 <div class="card-deck">
+    {{# if noGames}}
+        <h1>No games found</h1>
+    {{/if}}
     {{# each games}}
         <div class="col-sm-4">
         <div class="card" style="max-width: 15rem;">

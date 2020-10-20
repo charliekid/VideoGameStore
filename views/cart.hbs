@@ -179,14 +179,12 @@
                 let receipt = $("#receipt")
                 let quantityString = result.items.length == 1 ? `${result.items.length} item` : `${result.items.length} items`;
                 receipt.html("")
-                receipt.append(`
-                    <div>You've purchased ` + quantityString + ` for a total of $` + result.totalSum[0].cartSum + ` dollars </div>
+                receipt.append(`<div>You've purchased ` + quantityString + ` for a total of $` + result.totalSum[0].cartSum + ` dollars </div>
                     <ul>
                 `)
                 result.items.forEach(r => receipt.append('<li>' + r.gameTitle + '</li>'))
-                receipt.append(`</ul>`)
-
-                return gameIds;
+                receipt.append(`</ul><br>`)
+                receipt.append(`<div>Thank you for your order!</div>`)
             },
             error: function(error,status) {
                 alert(error);
@@ -199,19 +197,13 @@
         $.ajax({
             method: "GET",
             url: "/cart/decreaseQuantity",
-            contentType: "application/json",
-            success: function(result,status) {
-                console.log(result);
-            },
-            error: function(error,status) {
-                alert(error);
-            }
+            contentType: "application/json"
         });//ajax
     }
 
 	$(document).ready(function () {
 		$("#checkout").on("click", function () {
-		    cartAjax()
+		    cartAjax();
             quantityAjax();
         })
 

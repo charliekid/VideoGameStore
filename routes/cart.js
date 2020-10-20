@@ -45,4 +45,28 @@ router.get('/delete/:id', function(req, res, next) {
     });
 });
 
+router.get('/purchase', function(req, res, next) {
+    let username = 'Dagger1';
+    let query = `SELECT * FROM cart_table where username = '${username}'`
+    db.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send(err);
+        }
+        res.send(result);
+    });
+});
+
+router.get('/decreaseQuantity', function(req, res, next) {
+    let username = 'Dagger1';
+    let query = `UPDATE game_table SET qty = qty - 1 WHERE gameId = ${req.query.gameId}`;
+    db.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send(err);
+        }
+        res.send(result);
+    });
+});
+
 module.exports = router;

@@ -117,7 +117,7 @@
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 						</button></td>
 					<td>
-						<button type="button" class="btn btn-success">
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="checkout">
 							Checkout <span class="glyphicon glyphicon-play"></span>
 						</button></td>
 				</tr>
@@ -125,6 +125,27 @@
 			</table>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -150,8 +171,68 @@
 	function calculateAmount(amt, qty) {
 	    return amt * qty;
 	}
+
+	function cartAjax(gameIds) {
+        $.ajax({
+            method: "GET",
+            url: "/cart/purchase",
+            contentType: "application/json",
+            success: function(result,status) {
+
+                console.log(result);
+                let r;
+                for (r of result) {
+                    console.log(r);
+                    gameIds.push(r.gameId)
+                }
+
+            },
+
+            error: function(error,status) {
+
+                alert(error);
+            }
+
+        });//ajax
+    }
+
+    function quantityAjax (gameId) {
+        $.ajax({
+            method: "GET",
+            url: "/cart/decreaseQuantity",
+            contentType: "application/json",
+            data: {"gameId": gameId},
+            success: function(result,status) {
+
+                console.log(result);
+
+
+            },
+
+            error: function(error,status) {
+
+                alert(error);
+            }
+
+        });//ajax
+    }
+
 	$(document).ready(function () {
 		console.log("hello");
+		$("#checkout").on("click", function () {
+		    let gameIds = [];
+		    let g;
+		    let i;
+		    cartAjax(gameIds)
+            console.log("gameIds");
+            console.log(gameIds);
+            quantityAjax(13);
+            console.log("LOOP" + gameIds.length)
+            for (i = 0; i<gameIds.length; i++) {
+                // console.log(g);
+                quantityAjax(gameIds[i]);
+            }
+        })
 	//     alert("page ready");
 	//     $.ajax({
 	// 		type: "POST",

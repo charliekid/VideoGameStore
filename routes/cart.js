@@ -73,8 +73,7 @@ router.get('/receipt', function(req, res, next) {
 });
 
 router.get('/decreaseQuantity', function(req, res, next) {
-    // This function will allow us to decrease the qty. I think we should do this as a post for when they do hit okay on
-// modal.
+    // Charlie's code: This function will allow us to decrease the qty. I think we should do this as a post for when they do hit okay on modal.
     let username = 'Dagger1';
     let query = "SELECT * FROM cart_table WHERE username=" + "\'" + username + "\';";
     let i = 0;

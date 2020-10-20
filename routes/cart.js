@@ -48,7 +48,7 @@ router.get('/delete/:id', function(req, res, next) {
 router.get('/purchase', function(req, res, next) {
     let username = 'Dagger1';
     let sumQuery = "SELECT SUM(amount) AS cartSum from cart_table WHERE username=" + "\'" + username + "\';"
-    let query = `SELECT * FROM cart_table where username = '${req.session.username}'`
+    let query = `SELECT * FROM cart_table where username = '${username}'`
     db.query(query, (err, result) => {
         if (err) {
             console.log(err);
@@ -61,7 +61,7 @@ router.get('/purchase', function(req, res, next) {
                 res.render('views/error');
             }
             // console.log(sumResult);
-            // console.log(result);
+            console.log("result");
             console.log(result);
             res.send({
                 items: result,

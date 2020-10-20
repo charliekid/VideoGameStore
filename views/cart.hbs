@@ -132,7 +132,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Receipt</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -141,8 +141,7 @@
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="confirmation">OK</button>
             </div>
         </div>
     </div>
@@ -187,11 +186,17 @@
                 }
 
 
-                // $("#receipt").html("")
-                // receipt.append(`
-                //     <div>You've purchased
-                //
-                // `)
+                let receipt = $("#receipt")
+                let quantityString = result.items.length == 1 ? `${result.items.length} item` : `${result.items.length} items`;
+                receipt.html("")
+                receipt.append(`
+                    <div>You've purchased ` + quantityString + ` for a total of $` + result.totalSum[0].cartSum + ` dollars </div>
+                    <ul>
+                `)
+                result.items.forEach(r => receipt.append('<li>' + r.gameTitle + '</li>'))
+                receipt.append(`</ul>`)
+
+                return gameIds;
 
             },
 
@@ -201,6 +206,7 @@
             }
 
         });//ajax
+
     }
 
     function quantityAjax (gameId) {
@@ -230,13 +236,13 @@
 		    let gameIds = [];
 		    let g;
 		    let i;
-		    cartAjax(gameIds)
+		    gameIds = cartAjax(gameIds)
             console.log("gameIds");
             console.log(gameIds);
             quantityAjax(13);
-            console.log("LOOP" + gameIds.length)
+            console.log("LOOP " + gameIds.length)
             for (i = 0; i<gameIds.length; i++) {
-                // console.log(g);
+                console.log("index " + i);
                 quantityAjax(gameIds[i]);
             }
         })

@@ -138,7 +138,6 @@
                 </button>
             </div>
             <div class="modal-body" id="receipt">
-                ...
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="confirmation">OK</button>
@@ -174,18 +173,9 @@
 	function cartAjax(gameIds) {
         $.ajax({
             method: "GET",
-            url: "/cart/purchase",
+            url: "/cart/receipt",
             contentType: "application/json",
             success: function(result,status) {
-
-                console.log(result);
-                let r;
-                for (r of result.items) {
-                    console.log(r);
-                    gameIds.push(r.gameId)
-                }
-
-
                 let receipt = $("#receipt")
                 let quantityString = result.items.length == 1 ? `${result.items.length} item` : `${result.items.length} items`;
                 receipt.html("")
@@ -197,7 +187,6 @@
                 receipt.append(`</ul>`)
 
                 return gameIds;
-
             },
 
             error: function(error,status) {
@@ -214,12 +203,8 @@
             method: "GET",
             url: "/cart/decreaseQuantity",
             contentType: "application/json",
-            data: {"gameId": gameId},
             success: function(result,status) {
-
                 console.log(result);
-
-
             },
 
             error: function(error,status) {
@@ -233,19 +218,11 @@
 	$(document).ready(function () {
 		console.log("hello");
 		$("#checkout").on("click", function () {
-		    let gameIds = [];
-		    let g;
-		    let i;
-		    gameIds = cartAjax(gameIds)
-            console.log("gameIds");
-            console.log(gameIds);
-            quantityAjax(13);
-            console.log("LOOP " + gameIds.length)
-            for (i = 0; i<gameIds.length; i++) {
-                console.log("index " + i);
-                quantityAjax(gameIds[i]);
-            }
+		    cartAjax()
+            quantityAjax();
+
         })
+        $("#")
 	//     alert("page ready");
 	//     $.ajax({
 	// 		type: "POST",

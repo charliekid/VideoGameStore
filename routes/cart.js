@@ -45,7 +45,7 @@ router.get('/delete/:id', function(req, res, next) {
     });
 });
 
-router.get('/purchase', function(req, res, next) {
+router.get('/receipt', function(req, res, next) {
     let username = 'Dagger1';
     let sumQuery = "SELECT SUM(amount) AS cartSum from cart_table WHERE username=" + "\'" + username + "\';"
     let query = `SELECT * FROM cart_table where username = '${username}'`
@@ -73,15 +73,31 @@ router.get('/purchase', function(req, res, next) {
 });
 
 router.get('/decreaseQuantity', function(req, res, next) {
+    // This function will allow us to decrease the qty. I think we should do this as a post for when they do hit okay on
+// modal.
     let username = 'Dagger1';
-    let query = `UPDATE game_table SET qty = qty - 1 WHERE gameId = ${req.query.gameId}`;
-    db.query(query, (err, result) => {
-        if (err) {
-            console.log(err);
+    let query = "SELECT * FROM cart_table WHERE username=" + "\'" + username + "\';";
+    let i = 0;
+    db.query(query, (err, cartGames) => {
+        if(err) {
+            console.log("Error in testing qty get function");
             return res.status(500).send(err);
         }
-        res.send(result);
+        console.log("printing shit from result (testingQty) (gameId)");
+        //console.log(cartGames[1].gameId);
+        for(i = 0; i < cartGames.length; i++) {
+            let currentGameId = cartGames[i].gameId;
+            let qtyQuery = `UPDATE game_table SET qty = qty - 1 WHERE gameId = ${currentGameId}`;
+            // here we query to decrease the qty
+            db.query(qtyQuery, (err, qtyResult) => {
+                if(err) {
+                    console.log("Error in the testingQty/qtyQuery get function");
+                }
+                console.log(currentGameId + " qty is decreased");
+            }); // end of qty query
+        }
     });
 });
+
 
 module.exports = router;

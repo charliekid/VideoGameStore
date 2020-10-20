@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    // TODO: needs to get the user name from login somehow
-    let username = 'Dagger1';
+    let username = req.session.username;
     let query = "SELECT * FROM cart_table WHERE username=" + "\'" + username + "\';"
     let sumQuery = "SELECT SUM(amount) AS cartSum from cart_table WHERE username=" + "\'" + username + "\';"
 

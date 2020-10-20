@@ -140,7 +140,7 @@
             <div class="modal-body" id="receipt">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="confirmation">OK</button>
+                <a href="/" type="button" class="btn btn-primary" id="confirmation">OK</a>
             </div>
         </div>
     </div>
@@ -188,17 +188,14 @@
 
                 return gameIds;
             },
-
             error: function(error,status) {
-
                 alert(error);
             }
-
         });//ajax
 
     }
 
-    function quantityAjax (gameId) {
+    function quantityAjax() {
         $.ajax({
             method: "GET",
             url: "/cart/decreaseQuantity",
@@ -206,23 +203,18 @@
             success: function(result,status) {
                 console.log(result);
             },
-
             error: function(error,status) {
-
                 alert(error);
             }
-
         });//ajax
     }
 
 	$(document).ready(function () {
-		console.log("hello");
 		$("#checkout").on("click", function () {
 		    cartAjax()
             quantityAjax();
-
         })
-        $("#")
+
 	//     alert("page ready");
 	//     $.ajax({
 	// 		type: "POST",

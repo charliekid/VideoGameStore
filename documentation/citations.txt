@@ -4,3 +4,4 @@ custom helper functions: While I used many resources, the main ones I used are:
     https://github.com/ericf/express-handlebars#helpers
     https://stackoverflow.com/questions/38488939/handlebars-registerhelper-error-registerhelper-is-not-a-function
 Bootstrap
+center header: https://stackoverflow.com/questions/41149747/text-align-center-not-working

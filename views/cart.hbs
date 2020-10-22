@@ -117,7 +117,7 @@
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 						</button></td>
 					<td>
-						<button type="button" class="btn btn-success">
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="checkout">
 							Checkout <span class="glyphicon glyphicon-play"></span>
 						</button></td>
 				</tr>
@@ -125,6 +125,25 @@
 			</table>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Receipt</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="receipt">
+            </div>
+            <div class="modal-footer">
+                <a href="/cart/clear" type="button" class="btn btn-primary" id="confirmation">OK</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -150,8 +169,44 @@
 	function calculateAmount(amt, qty) {
 	    return amt * qty;
 	}
+
+	function cartAjax(gameIds) {
+        $.ajax({
+            method: "GET",
+            url: "/cart/receipt",
+            contentType: "application/json",
+            success: function(result,status) {
+                let receipt = $("#receipt")
+                let quantityString = result.items.length == 1 ? `${result.items.length} item` : `${result.items.length} items`;
+                receipt.html("")
+                receipt.append(`<div>You've purchased ` + quantityString + ` for a total of $` + result.totalSum[0].cartSum + ` dollars </div>
+                    <ul>
+                `)
+                result.items.forEach(r => receipt.append('<li>' + r.gameTitle + '</li>'))
+                receipt.append(`</ul><br>`)
+                receipt.append(`<div>Thank you for your order!</div>`)
+            },
+            error: function(error,status) {
+                alert(error);
+            }
+        });//ajax
+
+    }
+
+    function quantityAjax() {
+        $.ajax({
+            method: "GET",
+            url: "/cart/decreaseQuantity",
+            contentType: "application/json"
+        });//ajax
+    }
+
 	$(document).ready(function () {
-		console.log("hello");
+		$("#checkout").on("click", function () {
+		    cartAjax();
+            quantityAjax();
+        })
+
 	//     alert("page ready");
 	//     $.ajax({
 	// 		type: "POST",

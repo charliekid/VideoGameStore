@@ -309,6 +309,9 @@ ul.dropdown-cart li .item-right button{
   width: 20%;
 }
 
+#outOfStock {
+  color: red;
+}
 .col-md-3{
   display: inline-block;
   margin-left:-4px;

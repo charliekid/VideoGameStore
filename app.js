@@ -57,6 +57,10 @@ app.engine('hbs', hbs({extname : 'hbs', defaultLayout: 'layout', layoutsDir: __d
                 return description.slice(0, 100) + "...";
             }
             return description;
+        },
+        outOfStock: function(qty) {
+            console.log(qty);
+            console.log(typeof(qty))
         }
     }}));
 app.use(logger('dev'));

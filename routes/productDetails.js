@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/:productID', async function(req, res, next) {
     let gameID = req.query.productId;
     let querriedGame = await getVideoGameFromDB(gameID);
+    console.log(querriedGame)
     res.render('productDetails', { productDetails : querriedGame[0] });
 });
 

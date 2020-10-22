@@ -328,3 +328,7 @@ body .no-padding{
   padding-left: 0;
   padding-right: 0;
 }
+
+#productId {
+  justify-content: center;
+}

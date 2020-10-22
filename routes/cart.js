@@ -2,8 +2,26 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+    // TODO: needs to get the user name from login somehow
     let username = req.session.username;
+    if (req.query.productID != null) {
+        let videoGameID = req.query.productID;
+        let querriedGame = await getVideoGameFromDB(videoGameID);
+        let videoGameTitle = querriedGame[0].gameTitle;
+        let videoGameAmount = querriedGame[0].amount;
+        let insertStmt = 'INSERT INTO cart_table (username, gameId, gameTitle, amount) VALUES (?, ?, ?, ?)'
+        let data = [username, videoGameID, videoGameTitle, videoGameAmount]
+
+        // inserts selected game into user's cart
+        db.query(insertStmt, data, function(error, result) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    }
+
+
     let query = "SELECT * FROM cart_table WHERE username=" + "\'" + username + "\';"
     let sumQuery = "SELECT SUM(amount) AS cartSum from cart_table WHERE username=" + "\'" + username + "\';"
 
@@ -132,5 +150,15 @@ router.get('/clear', function (req, res, next) {
     });
 });
 
+function getVideoGameFromDB(gameID) {
+    let stmt = "SELECT * FROM game_table where gameId=?"
+    let data = [gameID]
+    return new Promise(function(resolve, reject) {
+        db.query(stmt, data, function(error, results) {
+            if (error) throw error;
+            resolve(results);
+        })
+    })
+}
 
 module.exports = router;

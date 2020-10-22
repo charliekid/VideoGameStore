@@ -9,7 +9,10 @@
         <h6 class="productDetailColors">Price: ${{productDetails.amount}}</h6>
         <h6 class="productDetailColors">Rating: {{productDetails.rating}}</h6>
         <h6 class="productDetailColors">Quantity: {{productDetails.qty}}</h6>
-        <button type="button" class="btn btn-success" id="addToCartButton">Add to Cart</button>
+        <form action="/cart" method="get">
+            <input type="hidden" name="productID" value={{productDetails.gameId}}>
+            <button type="submit" class="btn btn-success" id="addToCartButton">Add to Cart</button>
+        </form>
     </div>
 </body>
 {{> footer }}

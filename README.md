@@ -18,7 +18,7 @@ To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql
 ## You will be graded on the following:
 
 **Activities Required**
-- [ ] Research libraries/frameworks
+- [x] Research libraries/frameworks
     - Elixir
        - [Phoenix](https://www.phoenixframework.org/)
     - Java
@@ -52,16 +52,16 @@ To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql
 ***
 
 **REST API**
-- [ ] API must support the following
-    - [ ] List all items
+- [x] API must support the following
+    - [x] List all items
     - [x] Add new items
     - [x] Remove items
     - [x] Update items
-    - [ ] Search for items
+    - [x] Search for items
     - [x] Create new user account
     - [x] User Log in
     - [x] User log out
-    - [ ] Add items to cart
+    - [x] Add items to cart
     
 ***
 
@@ -71,7 +71,7 @@ To access the database: `docker run -p 8081:8080 -e ADMINER_DEFAULT_SERVER=mysql
 - [x] Product page
     - A listing of the products
     - Show pictures and brief descriptions. Check Amazon.com or etsy.com for inspiration
-- [ ] A product detail page
+- [x] A product detail page
     - The page that lists the descriptions and details of the product
 - [x] Shopping cart
     - The page that shows the user details of what they have selected.
@@ -110,8 +110,7 @@ Note: This would be used to store items that a user has purchased, put up for sa
 > As a video game shopper I want to login so I can purchase games and view my history
 
 **Definition Of Done**:
-- [ ] Purchase/view new/old video games
-- [ ] Have my history persist from previous times I’ve logged in
+- [x] Purchase/view new/old video games
 
 Note: This is necessary for the site since we want the users to be able to log back in with their data saved
 
@@ -144,7 +143,7 @@ Note: This will allow the user to navigate through the website
 
 **Definition Of Done**:
 - [x] Display all video games that meet the search criteria
-- [ ] Clicking on a video game will bring the user to the individual product page
+
 
 ***
 **User Story**: Shopping Cart - Charlie Nguyen
@@ -180,18 +179,61 @@ Note: This is necessary for the user to see what items they have selected
 > As a video game shopper I want to search for other video game titles/consoles and filter by category
 
 **Definition Of Done**:
-- [ ]
+- [x]
 
 Note: This is necessary for the site since we want users to search for other video game titles
 
 ***
 
 
-**User Story**: Edit Sell Item - Denize Ignacio
->As a video game seller I want to be able to edit item information later after I have put it up for sale. Anything from price, name, etc. I should be able to edit.
+**User Story**: Product Page- Denize Ignacio
+>As a video game shopper I want to be able to view details of a video game.
 
 **Definition Of Done**:
-- [ ]
+- [x] Clicking on a video game will bring the user to the individual product page
+
+***
+
+**User Story**: Account Details - Shawn 
+>As a video game shopper I want to be able to view my account details
+
+**Definition of Done**:
+- [x] User information displayed
+
+
+## Sprint 4 ()
+
+**User Story**: Login Partial - Shawn Deppe
+>As a video game shopper I want to be able to see a different navigation bar when I'm logged in.
+
+**Definition Of Done**:
+- []
+
+***
+
+**User Story**: Receipt - Cathy Hsu
+>As a video game shopper I want to be able to view my receipt of the games I just purchased
+
+**Definition Of Done**:
+- [x] After hitting checkout, the user would be display a receipt. 
+- [x] The quantity of the game is decreased
+
+***
+
+**User Story**: Add to Cart from Product Page - Denize Ignacio
+>As a video game shopper I want to be able to add things to cart
+
+**Definition Of Done**:
+- [x] Shopper is able to add items to their cart.
+
+***
+
+**User Story**: Clear Cart
+>As a video game shopper, I want my cart to be empty after I purchased my games.
+
+**Definition Of Done**:
+- [x] After hitting checkout, the user's cart will be empty.
+- [x] Items will also be added to purchased items. 
 
 ## Mockups
 >- To edit the mockups on Lucid Chart click [here](https://app.lucidchart.com/invitations/accept/72ffae0e-49dd-4de9-873d-e0dbb19fcf92)

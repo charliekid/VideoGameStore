@@ -5,19 +5,22 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     // TODO: needs to get the user name from login somehow
     let username = req.session.username;
-    let videoGameID = req.query.productID;
-    let querriedGame = await getVideoGameFromDB(videoGameID);
-    let videoGameTitle = querriedGame[0].gameTitle;
-    let videoGameAmount = querriedGame[0].amount;
-    let insertStmt = 'INSERT INTO cart_table (username, gameId, gameTitle, amount) VALUES (?, ?, ?, ?)'
-    let data = [username, videoGameID, videoGameTitle, videoGameAmount]
+    if (req.query.productID != null) {
+        let videoGameID = req.query.productID;
+        let querriedGame = await getVideoGameFromDB(videoGameID);
+        let videoGameTitle = querriedGame[0].gameTitle;
+        let videoGameAmount = querriedGame[0].amount;
+        let insertStmt = 'INSERT INTO cart_table (username, gameId, gameTitle, amount) VALUES (?, ?, ?, ?)'
+        let data = [username, videoGameID, videoGameTitle, videoGameAmount]
 
-    // inserts selected game into user's cart
-    db.query(insertStmt, data, function(error, result) {
-        if (error) {
-            console.log(error);
-        }
-    });
+        // inserts selected game into user's cart
+        db.query(insertStmt, data, function(error, result) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    }
+
 
     let query = "SELECT * FROM cart_table WHERE username=" + "\'" + username + "\';"
     let sumQuery = "SELECT SUM(amount) AS cartSum from cart_table WHERE username=" + "\'" + username + "\';"

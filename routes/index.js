@@ -9,7 +9,10 @@ router.get('/', async function(req, res, next) {
   for (r of result) {
     ratings.push(r.rating);
   }
-  res.render('index', { title: 'Game Stuff' , ratings: ratings});
+  let logged;
+  let name = req.session.username;
+  logged = loggedIn(name);
+  res.render('index', { title: 'Game Stuff' , ratings: ratings, loggedIn: logged});
 });
 
 function getRatings() {
@@ -22,5 +25,14 @@ function getRatings() {
       reject("Error");
     });
   });
+}
+
+function loggedIn(name) {
+  console.log(name);
+  if (name == null) {
+    return false;
+  } else {
+    return true;
+  }
 }
 module.exports = router;

@@ -329,6 +329,14 @@ body .no-padding{
   padding-right: 0;
 }
 
+
+.product-content-info {
+  text-align: right;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
 #productId {
   justify-content: center;
 }
+

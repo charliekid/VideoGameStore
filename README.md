@@ -10,6 +10,9 @@ For this project teams of 3-4 students will design and implement a webstore usin
 ## Project Board
 [Web Store Project Board](https://github.com/users/dignacio0815/projects/1)
 
+## Project Website
+[Website](https://video-game-store.herokuapp.com/)
+
 ## Running the App
 To run the app: `nodemon ./bin/wwww`
 

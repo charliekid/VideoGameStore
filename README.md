@@ -5,7 +5,7 @@
 Use the agile process to research, develop, deploy, and present a full stack webstore.  This is intended to give students the experience of designing and deploying a website while researching and learning new information. In addition,it gives students an opportunity to develop proficiency with the technology of their choicewhich will hopefully instill a sense of pride and accomplishment... wait...
 
 ## Project Description
-For this project teams of 3-4 students will design and implement a webstore using modern web frameworks. This will require the development of a Representational state transfer(REST) Application Programming Interface (API), a constant integration, constant development (CICD) pipeline, and a persistence layer. The website should be deployed to a Platform as a Service (PaaS) such as Herokuor Google App Engine. 
+For this project teams of 3-4 students will design and implement a webstore using modern web frameworks. This will require the development of a Representational State Transfer (REST) Application Programming Interface (API), a constant integration, constant development (CICD) pipeline, and a persistence layer. The website should be deployed to a Platform as a Service (PaaS) such as Heroku or Google App Engine. 
 
 ## Project Board
 [Web Store Project Board](https://github.com/users/dignacio0815/projects/1)
